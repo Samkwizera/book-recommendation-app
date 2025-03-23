@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Book Recommendation App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+ 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+ 
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Discover Your Next Favorite Book</h1>
+      <p>Using the power of open data to bring stories closer to you.</p>
+      
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by title, author, or keyword..." />
+        <button id="searchBtn" class="btn-search">Search</button>
+      </div>
+    </div>
+  </header>
+
+ 
+  <main class="main-content">
+    <section class="sort-section">
+      <label for="sortSelect">Sort by:</label>
+      <select id="sortSelect">
+        <option value="original">Original Order</option>
+        <option value="title">Title</option>
+        <option value="year">First Publish Year</option>
+      </select>
+    </section>
+
+    <section class="results-section">
+      <ul id="resultsList" class="results-grid"></ul>
+    </section>
+  </main>
+
+ 
+  <footer class="footer">
+    <p>Powered by Open Library API | Book Recommendation App</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script> 
+  
+</body>
+</html>
