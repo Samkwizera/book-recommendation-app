@@ -3,7 +3,7 @@ import os
 from flask import Flask, request, jsonify, render_template
 from dotenv import load_dotenv
 
-# Load environment variables from .env if needed
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -30,7 +30,7 @@ def search_books():
     url = "https://openlibrary.org/search.json"
     params = {
         "q": query,
-        "limit": 10  # Only fetch 10 results for this example
+        "limit": 10  
     }
 
     response = requests.get(url, params=params)
@@ -41,7 +41,7 @@ def search_books():
     data = response.json()
     books = data.get("docs", [])
 
-    # Transform the results into a simpler list of dicts
+    
     results = []
     for b in books:
         results.append({
@@ -53,5 +53,5 @@ def search_books():
     return jsonify({"books": results})
 
 if __name__ == '__main__':
-    # For local development (not for production)
+   
     app.run(debug=True)
