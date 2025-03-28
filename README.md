@@ -5,6 +5,7 @@
 A simple project that offers users personalized book recommendations based on their favorite genres, authors, or keywords. This brief guide shows how to set up and run the app locally, deploy it to your servers, and integrate with external APIs.
 
 ---
+# website = http://samuelkwizera.tech/ 
 
 ## 1. Local Setup
 
