@@ -9,45 +9,80 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
     rel="stylesheet"
   />
- 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
- 
   <header class="hero">
     <div class="hero-content">
       <h1>Discover Your Next Favorite Book</h1>
-      <p>Using the power of open data to bring stories closer to you.</p>
+      <p>Find your next read with our dual-powered book search</p>
       
       <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search by title, author, or keyword..." />
-        <button id="searchBtn" class="btn-search">Search</button>
+        <div class="search-controls">
+          <div class="search-input-group">
+            <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Search by title, author, or keyword..." 
+              aria-label="Book search input"
+            />
+            <button id="searchBtn" class="btn-search">
+              <i class="fas fa-search"></i> Search
+            </button>
+          </div>
+          
+          <div class="api-selector">
+            <label for="apiSource">Search using:</label>
+            <select id="apiSource">
+              <option value="openlib">Open Library</option>
+              <option value="google">Google Books</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
- 
   <main class="main-content">
-    <section class="sort-section">
-      <label for="sortSelect">Sort by:</label>
-      <select id="sortSelect">
-        <option value="original">Original Order</option>
-        <option value="title">Title</option>
-        <option value="year">First Publish Year</option>
-      </select>
+    <section class="controls-section">
+      <div class="sort-control">
+        <label for="sortSelect">Sort by:</label>
+        <select id="sortSelect">
+          <option value="original">Original Order</option>
+          <option value="title">Title (A-Z)</option>
+          <option value="year">Publication Year</option>
+        </select>
+      </div>
+      
+      <div class="result-count" id="resultCount">
+        Showing 0 results
+      </div>
     </section>
 
     <section class="results-section">
+      <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+        <i class="fas fa-spinner fa-spin"></i> Loading results...
+      </div>
+      
       <ul id="resultsList" class="results-grid"></ul>
+      
+      <div id="noResults" class="no-results" style="display: none;">
+        <i class="fas fa-book-open"></i>
+        <p>No books found. Try a different search term.</p>
+      </div>
     </section>
   </main>
 
- 
   <footer class="footer">
-    <p>Powered by Open Library API | Book Recommendation App</p>
+    <p>
+      <span>Powered by:</span>
+      <span class="api-badge openlib">Open Library</span>
+      <span class="api-badge google">Google Books</span>
+    </p>
+    <p class="copyright">© 2023 Book Recommendation App</p>
   </footer>
 
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script> 
-  
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
